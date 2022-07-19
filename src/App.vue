@@ -1,42 +1,241 @@
 <template>
   <div class="wrapper">
-    <post-form @create="createPost" :posts="posts" />
-    <post-list :posts="posts" />
+    <div class="container">
+      <card-create-form @create="createPost" :cards="cards" />
+      <card-list :cards="cards" />
+    </div>
   </div>
 </template>
 
 <script>
-import PostForm from "./components/post-form/PostForm.vue";
-import PostList from "./components/post-list/PostList.vue";
+import CardList from "./components/card-list/CardList.vue";
+import CardCreateForm from "./components/card-create-form/CardCreateForm.vue";
+
 export default {
   data() {
     return {
-      posts: [
-        { id: 1, title: "java", body: "11" },
-        { id: 2, title: "javaww", body: "44" },
-        { id: 3, title: "javsa", body: "33" },
-        { id: 4, title: "javssssa", body: "22" },
+      cards: [
+        {
+          id: 1,
+          photo: "url",
+          title: "Наименование товара",
+          description:
+            "Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк",
+          cost: 10000,
+        },
+        {
+          id: 2,
+          photo: "url",
+          title: "Наименование товара",
+          description:
+            "Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк",
+          cost: 10000,
+        },
+        {
+          id: 3,
+          photo: "url",
+          title: "Наименование товара",
+          description:
+            "Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк",
+          cost: 10000,
+        },
+        {
+          id: 4,
+          photo: "url",
+          title: "Наименование товара",
+          description:
+            "Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк",
+          cost: 10000,
+        },
+        {
+          id: 5,
+          photo: "url",
+          title: "Наименование товара",
+          description:
+            "Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк",
+          cost: 10000,
+        },
+        {
+          id: 6,
+          photo: "url",
+          title: "Наименование товара",
+          description:
+            "Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк",
+          cost: 10000,
+        },
+        {
+          id: 7,
+          photo: "url",
+          title: "Наименование товара",
+          description:
+            "Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк",
+          cost: 10000,
+        },
+        {
+          id: 8,
+          photo: "url",
+          title: "Наименование товара",
+          description:
+            "Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк",
+          cost: 10000,
+        },
+        {
+          id: 9,
+          photo: "url",
+          title: "Наименование товара",
+          description:
+            "Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк",
+          cost: 10000,
+        },
       ],
     };
   },
-  methods: {
-    createPost(post) {
-      console.log(post);
-      this.posts.push(post);
-    },
-  },
-  components: { PostForm, PostList },
+  methods: {},
+  components: { CardList, CardCreateForm },
 };
 </script>
 
-<style>
-* {
+<style lang="scss">
+html,
+description,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tdescription,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+description {
+  line-height: 1;
+}
+input, textarea, button {
+  outline: none ;
+  border: none;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 
 .wrapper {
-  padding: 24px;
+  padding: 32px;
+}
+
+.container {
+  width: 100%;
+  display: flex;
+  gap: 16px;
+
+  & > * {
+    flex: 1;
+  }
 }
 </style>
