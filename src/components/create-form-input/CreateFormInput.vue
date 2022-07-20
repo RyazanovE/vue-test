@@ -5,21 +5,32 @@
       placeholder="Введите наименование товара"
       :value="modelValue"
       @input="inputHandler"
-      class="form-group__input"
+      :class="applyInputStyle()"
       type="text"
     />
+    <p class="form-group__alert" v-if="!isValid">Поле является обязательным</p>
   </div>
 </template>
 <script>
 export default {
+  data() {
+    return {
+      isValid: true,
+    };
+  },
   props: {
+    isDisabled: Boolean,
     modelValue: [String, Number],
   },
   methods: {
-    inputHandler(e) {
-      this.$emit("update:modelValue", e.target.value);
+    applyInputStyle: function () {
+      return [this.isValid ? "form-group__input" : "form-group__input form-group__input_red"];
     },
-	
+    inputHandler(e) {
+      this.$emit("update:isDisabled", !!e.target.value);
+      this.$emit("update:modelValue", e.target.value);
+      this.isValid = !!e.target.value;
+    },
   },
 };
 </script>
@@ -30,8 +41,17 @@ export default {
   flex-direction: column;
   gap: 4px;
 
-  &__label {
+  &__alert {
+    margin-top: 4px;
     font-size: 10px;
+    line-height: 10px;
+
+    letter-spacing: -0.02em;
+
+    color: #ff8484;
+  }
+  &__label {
+    font-size: 13px;
     letter-spacing: -0.02em;
     color: #49485e;
 
@@ -51,12 +71,15 @@ export default {
     }
   }
   &__input {
-    line-height: 15px;
+    font-size: 15px;
     padding: 16px 12px;
     resize: none;
     border-radius: 4px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 
+    &_red {
+      border: 1px solid #ff8484;
+    }
     &_large {
       min-height: 108px;
     }

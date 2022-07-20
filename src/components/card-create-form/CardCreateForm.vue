@@ -2,7 +2,9 @@
   <div class="card-form-container">
     <h4 class="card-form-header">Добавление товара</h4>
     <form class="card-form" @submit.prevent>
-      <create-form-input v-model="card.title"
+      <create-form-input
+        v-model:isDisabled="isButtonValid.title"
+        v-model="card.title"
         >Наименование товара</create-form-input
       >
       <div class="card-from__group form-group">
@@ -13,12 +15,29 @@
           class="form-group__input form-group__input_large"
         />
       </div>
-      <create-form-input v-model="card.img"
+      <create-form-input
+        v-model:isDisabled="isButtonValid.img"
+        v-model="card.img"
         >Ссылка на изображение товара</create-form-input
       >
-      <create-form-input v-model="card.cost">Цена товара</create-form-input>
+      <create-form-input
+        v-model:isDisabled="isButtonValid.cost"
+        v-model="card.cost"
+        >Цена товара</create-form-input
+      >
 
-      <button @click="createItem" class="card-form__button" type="submit">
+      <button
+        :disabled="
+          !(
+            isButtonValid.title &&
+            isButtonValid.img &&
+            isButtonValid.cost
+          )
+        "
+        @click="createItem"
+        class="card-form__button"
+        type="submit"
+      >
         Добавить товар
       </button>
     </form>
@@ -37,6 +56,11 @@ export default {
   },
   data() {
     return {
+      isButtonValid: {
+        title: false,
+        img: false,
+        cost: false,
+      },
       card: {
         img: "",
         title: "",
@@ -58,11 +82,21 @@ export default {
         cost: null,
       };
     },
+    validateHandler() {},
   },
 };
 </script>
 
 <style lang="scss" scoped>
+@media screen and (max-width: 1200px) {
+  .card-form-container {
+    margin-top: -576px;
+  }
+  .card-form {
+    position: static !important;
+  }
+}
+ 
 .card-form-container {
   display: flex;
   flex-direction: column;
@@ -97,6 +131,18 @@ export default {
     background: #eeeeee;
     border-radius: 10px;
     cursor: pointer;
+    transition: opacity 0.3s ease;
+    &:hover {
+      opacity: 0.8;
+    }
+    &:active {
+      background-color: #dbdada;
+    }
+    &:disabled {
+      background: #eeeeee !important;
+      cursor: default;
+      opacity: 0.5;
+    }
   }
 }
 
