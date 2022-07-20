@@ -221,6 +221,8 @@ description {
 input,
 textarea,
 button {
+  font-family: inherit;
+  font-size: inherit;
   outline: none;
   border: none;
 }

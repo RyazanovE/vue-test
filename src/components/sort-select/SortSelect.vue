@@ -3,11 +3,28 @@
     <img class="card-list-select__arrow" src="public\images\Rectangle 33.svg" />
     <select class="card-list-select">
       <option>По умолчанию</option>
+      <option
+        v-for="option in options"
+        :key="option.value"
+        :value="option.value"
+      >
+        {{ option.label }}
+      </option>
     </select>
   </div>
 </template>
 <script>
-export default {};
+export default {
+  props: {
+    modelValue: {
+      type: String,
+    },
+    options: {
+      type: Array,
+      default: () => [],
+    },
+  },
+};
 </script>
 <style scoped lang="scss">
 .card-list-select-wrapper {
