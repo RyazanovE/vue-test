@@ -6,7 +6,7 @@
       <ul class="card-body-wrapper card-body">
         <li class="card-body__title">{{ card.title }}</li>
         <li class="card-body__description">{{ card.description }}</li>
-        <li class="card-body__cost">{{ devideThousands(card.cost) }} руб.</li>
+        <li class="card-body__cost">{{ devideThousands }} руб.</li>
       </ul>
     </div>
   </li>
@@ -21,9 +21,9 @@ export default {
       required: true,
     },
   },
-  methods: {
-    devideThousands(str) {
-      var parts = (str + "").split("."),
+  computed: {
+    devideThousands() {
+      var parts = (this.card.cost + "").split("."),
         main = parts[0],
         len = main.length,
         output = "",
