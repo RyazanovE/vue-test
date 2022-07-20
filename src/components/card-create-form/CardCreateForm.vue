@@ -2,11 +2,13 @@
   <div class="card-form-container">
     <h4 class="card-form-header">Добавление товара</h4>
     <form class="card-form" @submit.prevent>
+
       <create-form-input
         v-model:isDisabled="isButtonValid.title"
         v-model="card.title"
         >Наименование товара</create-form-input
       >
+
       <div class="card-from__group form-group">
         <label class="form-group__label">Описание товара</label>
         <textarea
@@ -15,6 +17,7 @@
           class="form-group__input form-group__input_large"
         />
       </div>
+
       <create-form-input
         v-model:isDisabled="isButtonValid.img"
         v-model="card.img"
@@ -28,11 +31,7 @@
 
       <button
         :disabled="
-          !(
-            isButtonValid.title &&
-            isButtonValid.img &&
-            isButtonValid.cost
-          )
+          !(isButtonValid.title && isButtonValid.img && isButtonValid.cost)
         "
         @click="createItem"
         class="card-form__button"
@@ -90,13 +89,13 @@ export default {
 <style lang="scss" scoped>
 @media screen and (max-width: 1200px) {
   .card-form-container {
-    margin-top: -576px;
+    margin-top: -597px;
   }
   .card-form {
     position: static !important;
   }
 }
- 
+
 .card-form-container {
   display: flex;
   flex-direction: column;

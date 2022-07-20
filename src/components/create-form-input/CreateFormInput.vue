@@ -24,7 +24,11 @@ export default {
   },
   methods: {
     applyInputStyle: function () {
-      return [this.isValid ? "form-group__input" : "form-group__input form-group__input_red"];
+      return [
+        this.isValid
+          ? "form-group__input"
+          : "form-group__input form-group__input_red",
+      ];
     },
     inputHandler(e) {
       this.$emit("update:isDisabled", !!e.target.value);
