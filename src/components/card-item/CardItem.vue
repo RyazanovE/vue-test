@@ -1,12 +1,12 @@
 <template lang="">
-  <li class="card-list__item card" >
+  <li class="card-list__item card">
     <div class="card-container">
-      <delete-button  @click="$emit('remove', card)"/>
+      <delete-button @click="$emit('remove', card)" />
       <img src="public\images\Rectangle 31.png" class="card__img" />
       <ul class="card-body-wrapper card-body">
         <li class="card-body__title">{{ card.title }}</li>
         <li class="card-body__description">{{ card.description }}</li>
-        <li class="card-body__cost">{{ card.cost }} руб.</li>
+        <li class="card-body__cost">{{ devideThousands(card.cost) }} руб.</li>
       </ul>
     </div>
   </li>
@@ -22,17 +22,32 @@ export default {
     },
   },
   methods: {
- 
+    devideThousands(str) {
+      var parts = (str + "").split("."),
+        main = parts[0],
+        len = main.length,
+        output = "",
+        i = len - 1;
+
+      while (i >= 0) {
+        output = main.charAt(i) + output;
+        if ((len - i) % 3 === 0 && i > 0) {
+          output = " " + output;
+        }
+        --i;
+      }
+
+      if (parts.length > 1) {
+        output += "." + parts[1];
+      }
+      return output;
+    },
   },
 };
 </script>
 
 <style lang="scss">
 .card-list {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-
   &__item {
     position: relative;
     display: flex;

@@ -103,7 +103,17 @@ export default {
 </script>
 
 <style lang="scss">
+@media screen and (max-width: 1200px) {
+  .wrapper {
+    padding: 16px;
+  }
+  .container {
+    flex-direction: column;
+  }
+}
+
 html,
+body,
 description,
 div,
 span,

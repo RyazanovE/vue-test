@@ -15,11 +15,15 @@ export default {};
 
   width: 32px;
   height: 32px;
-  background: #ff8484;
+  background-color: #ff8484;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
 
   cursor: pointer;
-  transition: opacity 0.3s, visibility 0.3s;
+  transition: opacity 0.3s, visibility 0.3s, background-color 0.3s;
+
+  &:hover {
+    background-color: #f55c5c;
+  }
 }
 </style>
