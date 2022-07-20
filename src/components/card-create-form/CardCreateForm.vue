@@ -2,49 +2,23 @@
   <div class="card-form-container">
     <h4 class="card-form-header">Добавление товара</h4>
     <form class="card-form" @submit.prevent>
-      <div class="card-from__group form-group">
-        <label class="form-group__label form-group__label_dot"
-          >Наименование товара</label
-        >
-        <input
-          placeholder="Введите наименование товара"
-          v-model="card.title"
-          class="form-group__input"
-          type="text"
-        />
-      </div>
+      <create-form-input v-model="card.title"
+        >Наименование товара</create-form-input
+      >
       <div class="card-from__group form-group">
         <label class="form-group__label">Описание товара</label>
         <textarea
           placeholder="Введите описание товара"
-          v-model="card.title"
+          v-model="card.description"
           class="form-group__input form-group__input_large"
         />
       </div>
-      <div class="card-from__group form-group">
-        <label class="form-group__label form-group__label_dot"
-          >Ссылка на изображение товара</label
-        >
-        <input
-          placeholder="Введите ссылку"
-          v-model="card.title"
-          class="form-group__input"
-          type="text"
-        />
-      </div>
-      <div class="card-from__group form-group">
-        <label class="form-group__label form-group__label_dot"
-          >Цена товара</label
-        >
-        <input
-          placeholder="Введите цену"
-          v-model="card.title"
-          class="form-group__input"
-          type="text"
-        />
-      </div>
+      <create-form-input v-model="card.img"
+        >Ссылка на изображение товара</create-form-input
+      >
+      <create-form-input v-model="card.cost">Цена товара</create-form-input>
 
-      <button @click="createPost" class="card-form__button" type="submit">
+      <button @click="createItem" class="card-form__button" type="submit">
         Добавить товар
       </button>
     </form>
@@ -52,7 +26,9 @@
 </template>
 
 <script>
+import CreateFormInput from "../create-form-input/CreateFormInput.vue";
 export default {
+  components: { CreateFormInput },
   props: {
     cards: {
       type: Array,
@@ -62,22 +38,25 @@ export default {
   data() {
     return {
       card: {
+        img: "",
         title: "",
+        description: "",
+        cost: null,
       },
     };
   },
+
   methods: {
-    inputTitleHandler(e) {
-      this.title = e.target.value;
-    },
-    createPost() {
-      console.log(props);
-      const id = 2;
-      this.$emit("create", this.post);
-      this.post = {
+    createItem() {
+      const nextId = this.cards[this.cards.length - 1].id + 1 || 1;
+      this.card.id = nextId;
+
+      this.$emit("create", this.card);
+      this.card = {
         title: "",
+        description: "",
+        cost: null,
       };
-      this.posts.push(this.post);
     },
   },
 };
@@ -117,6 +96,7 @@ export default {
     font-size: 12px;
     background: #eeeeee;
     border-radius: 10px;
+    cursor: pointer;
   }
 }
 

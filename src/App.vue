@@ -1,8 +1,8 @@
 <template>
   <div class="wrapper">
     <div class="container">
-      <card-create-form @create="createPost" :cards="cards" />
-      <card-list :cards="cards" />
+      <card-create-form @create="createItem" :cards="cards" />
+      <card-list @remove="removeItem" :cards="cards" />
     </div>
   </div>
 </template>
@@ -90,7 +90,14 @@ export default {
       ],
     };
   },
-  methods: {},
+  methods: {
+    createItem(newItem) {
+      this.cards.push(newItem);
+    },
+    removeItem(id) {
+      this.cards = this.cards.filter((c) => c.id !== id);
+    },
+  },
   components: { CardList, CardCreateForm },
 };
 </script>
@@ -201,8 +208,10 @@ section {
 description {
   line-height: 1;
 }
-input, textarea, button {
-  outline: none ;
+input,
+textarea,
+button {
+  outline: none;
   border: none;
 }
 ol,
