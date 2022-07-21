@@ -80,10 +80,8 @@ export default {
   transition: all 1s;
 }
 
-.fade-enter-from {
-  opacity: 1;
-}
-.fade-leave-to {
+
+.fade-enter-from, .fade-leave-to {
   opacity: 0;
   transform: translateY(-50%);
 }
