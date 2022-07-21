@@ -2,8 +2,8 @@
   <div class="wrapper">
     <div class="container">
       <card-create-form @create="createItem" :cards="cards" />
-      <card-list v-if="cards.length > 0" @remove="removeItem" :cards="cards" />
-      <img class="loader" src="public\images\loader.gif" v-else/>
+      <card-list v-if="cards.length" @remove="removeItem" :cards="cards" />
+      <img class="loader" src="public\images\loader.gif" v-else-if="isLoading" />
     </div>
   </div>
 </template>
@@ -15,6 +15,7 @@ import CardCreateForm from "./components/card-create-form/CardCreateForm.vue";
 export default {
   data() {
     return {
+      isLoading: true,
       cards: [],
     };
   },
@@ -45,7 +46,7 @@ export default {
         this.cards = [
           {
             id: 1,
-            photo: "url",
+            photo: "public\images\Rectangle 31.png",
             title: "Наименование товара",
             description:
               "Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк",
@@ -53,7 +54,7 @@ export default {
           },
           {
             id: 2,
-            photo: "url",
+            photo: "public\images\Rectangle 31.png",
             title: "Наименование товара",
             description:
               "Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк",
@@ -61,7 +62,7 @@ export default {
           },
           {
             id: 3,
-            photo: "url",
+            photo: "public\images\Rectangle 31.png",
             title: "Наименование товара",
             description:
               "Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк",
@@ -69,7 +70,7 @@ export default {
           },
           {
             id: 4,
-            photo: "url",
+            photo: "public\images\Rectangle 31.png",
             title: "Наименование товара",
             description:
               "Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк",
@@ -77,7 +78,7 @@ export default {
           },
           {
             id: 5,
-            photo: "url",
+            photo: "public\images\Rectangle 31.png",
             title: "Наименование товара",
             description:
               "Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк",
@@ -85,7 +86,7 @@ export default {
           },
           {
             id: 6,
-            photo: "url",
+            photo: "public\images\Rectangle 31.png",
             title: "Наименование товара",
             description:
               "Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк",
@@ -93,7 +94,7 @@ export default {
           },
           {
             id: 7,
-            photo: "url",
+            photo: "public\images\Rectangle 31.png",
             title: "Наименование товара",
             description:
               "Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк",
@@ -101,7 +102,7 @@ export default {
           },
           {
             id: 8,
-            photo: "url",
+            photo: "public\images\Rectangle 31.png",
             title: "Наименование товара",
             description:
               "Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк",
@@ -109,7 +110,7 @@ export default {
           },
           {
             id: 9,
-            photo: "url",
+            photo: "public\images\Rectangle 31.png",
             title: "Наименование товара",
             description:
               "Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк",
@@ -117,6 +118,7 @@ export default {
           },
         ];
       }
+      this.isLoading = false;
     }, 1000);
   },
   components: { CardList, CardCreateForm },
@@ -134,7 +136,7 @@ export default {
 }
 
 .loader {
- transform: scale(0.2)
+  transform: scale(0.2);
 }
 
 html,

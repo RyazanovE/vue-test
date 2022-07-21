@@ -2,7 +2,7 @@
   <div class="card-from__group form-group">
     <label class="form-group__label form-group__label_dot"><slot></slot></label>
     <input
-      placeholder="Введите наименование товара"
+      :placeholder="placeholder"
       :value="modelValue"
       @input="inputHandler"
       :class="applyInputStyle()"
@@ -19,6 +19,7 @@ export default {
     };
   },
   props: {
+    placeholder: String,
     isDisabled: Boolean,
     modelValue: [String, Number],
   },

@@ -2,8 +2,8 @@
   <div class="card-form-container">
     <h4 class="card-form-header">Добавление товара</h4>
     <form class="card-form" @submit.prevent>
-
       <create-form-input
+        :placeholder="'Введите наименование товара'"
         v-model:isDisabled="isButtonValid.title"
         v-model="card.title"
         >Наименование товара</create-form-input
@@ -19,11 +19,13 @@
       </div>
 
       <create-form-input
+        :placeholder="'Введите ссылку'"
         v-model:isDisabled="isButtonValid.img"
         v-model="card.img"
         >Ссылка на изображение товара</create-form-input
       >
       <create-form-input
+        :placeholder="'Введите цену'"
         v-model:isDisabled="isButtonValid.cost"
         v-model="card.cost"
         >Цена товара</create-form-input
@@ -89,7 +91,7 @@ export default {
 <style lang="scss" scoped>
 @media screen and (max-width: 1200px) {
   .card-form-container {
-    margin-top: -597px;
+    display: none !important;
   }
   .card-form {
     position: static !important;
@@ -100,7 +102,7 @@ export default {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  max-width: 332px;
+  max-width: 23%;
 }
 
 .card-form-header {
