@@ -2,8 +2,8 @@
   <div class="wrapper">
     <div class="container">
       <card-create-form @create="createItem" :cards="cards" />
-      <card-list v-if="!isLoading" @remove="removeItem" :cards="cards" />
-      <img class="loader" src="images\loader.gif" v-else />
+      <card-list v-show="!isLoading" @remove="removeItem" :cards="cards" />
+      <img class="loader" src="images\loader.gif" v-show="isLoading" />
     </div>
   </div>
 </template>
