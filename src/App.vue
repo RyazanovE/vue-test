@@ -30,7 +30,7 @@ export default {
   watch: {
     cards: {
       handler(newCards) {
-        localStorage.setItem("tr", JSON.stringify(newCards));
+          localStorage.setItem("tr", JSON.stringify(newCards));
       },
       deep: true,
     },
@@ -44,7 +44,7 @@ export default {
         this.cards = [
           {
             id: 1,
-            photo: "public\images\Rectangle 31.png",
+            photo: "public/images/Rectangle 31.png",
             title: "Наименование товара",
             description:
               "Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк",
@@ -52,7 +52,7 @@ export default {
           },
           {
             id: 2,
-            photo: "public\images\Rectangle 31.png",
+            photo: "public/images/Rectangle 31.png",
             title: "Наименование товара",
             description:
               "Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк",
@@ -60,7 +60,7 @@ export default {
           },
           {
             id: 3,
-            photo: "public\images\Rectangle 31.png",
+            photo: "public/images/Rectangle 31.png",
             title: "Наименование товара",
             description:
               "Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк",
@@ -68,7 +68,7 @@ export default {
           },
           {
             id: 4,
-            photo: "public\images\Rectangle 31.png",
+            photo: "public/images/Rectangle 31.png",
             title: "Наименование товара",
             description:
               "Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк",
@@ -76,7 +76,7 @@ export default {
           },
           {
             id: 5,
-            photo: "public\images\Rectangle 31.png",
+            photo: "public/images/Rectangle 31.png",
             title: "Наименование товара",
             description:
               "Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк",
@@ -84,7 +84,7 @@ export default {
           },
           {
             id: 6,
-            photo: "public\images\Rectangle 31.png",
+            photo: "public/images/Rectangle 31.png",
             title: "Наименование товара",
             description:
               "Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк",
@@ -92,7 +92,7 @@ export default {
           },
           {
             id: 7,
-            photo: "public\images\Rectangle 31.png",
+            photo: "public/images/Rectangle 31.png",
             title: "Наименование товара",
             description:
               "Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк",
@@ -100,7 +100,7 @@ export default {
           },
           {
             id: 8,
-            photo: "public\images\Rectangle 31.png",
+            photo: "public/images/Rectangle 31.png",
             title: "Наименование товара",
             description:
               "Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк",
@@ -108,7 +108,7 @@ export default {
           },
           {
             id: 9,
-            photo: "public\images\Rectangle 31.png",
+            photo: "public/images/Rectangle 31.png",
             title: "Наименование товара",
             description:
               "Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк",
