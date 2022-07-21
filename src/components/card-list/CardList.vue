@@ -1,14 +1,14 @@
 <template lang="">
   <section class="card-list-container">
     <sort-select :options="sortOptions" v-model="selectedSort" />
-    <ul class="card-list">
+    <transition-group name="fade" tag="ul" class="card-list">
       <card-item
         @remove="$emit('remove', card.id)"
         v-for="card in cards"
         :card="card"
         :key="card.id"
       />
-    </ul>
+    </transition-group>
   </section>
 </template>
 
@@ -73,5 +73,18 @@ export default {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 16px;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 1s;
+}
+
+.fade-enter-from {
+  opacity: 1;
+}
+.fade-leave-to {
+  opacity: 0;
+  transform: translateY(-50%);
 }
 </style>
