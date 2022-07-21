@@ -1,6 +1,6 @@
 <template lang="">
   <section class="card-list-container">
-    <sort-select />
+    <sort-select :options="sortOptions" v-model="selectedSort" />
     <ul class="card-list">
       <card-item
         @remove="$emit('remove', card.id)"
@@ -16,11 +16,35 @@
 import SortSelect from "../sort-select/SortSelect.vue";
 import CardItem from "../card-item/CardItem.vue";
 export default {
+  data() {
+    return {
+      selectedSort: "По умолчанию",
+      sortOptions: [
+        { label: "По цене max", value: "cost_max" },
+        { label: "По цене min", value: "cost_min" },
+        { label: "По наименованию", value: "name" },
+      ],
+    };
+  },
   components: { CardItem, SortSelect },
   props: {
     cards: {
       type: Array,
       required: true,
+    },
+  },
+  watch: {
+    selectedSort(sortType) {
+      this.cards.sort((c1, c2) => {
+        switch (sortType) {
+          case "cost_max":
+            return c2.cost - c1.cost;
+          case "cost_min":
+            return c1.cost - c2.cost;
+          case "name":
+            return c1.title.localeCompare(c2.title);
+        }
+      });
     },
   },
 };
