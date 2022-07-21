@@ -2,12 +2,8 @@
   <div class="wrapper">
     <div class="container">
       <card-create-form @create="createItem" :cards="cards" />
-      <card-list v-if="cards.length" @remove="removeItem" :cards="cards" />
-      <img
-        class="loader"
-        src="public\images\loader.gif"
-        v-else-if="isLoading"
-      />
+      <card-list v-if="!isLoading" @remove="removeItem" :cards="cards" />
+      <img class="loader" src="public\images\loader.gif" v-else />
     </div>
   </div>
 </template>
@@ -34,9 +30,7 @@ export default {
   watch: {
     cards: {
       handler(newCards) {
-        if (this.cards.length) {
-          localStorage.setItem("tr", JSON.stringify(newCards));
-        }
+        localStorage.setItem("tr", JSON.stringify(newCards));
       },
       deep: true,
     },

@@ -73,7 +73,7 @@ export default {
 
   methods: {
     createItem() {
-      const nextId = this.cards[this.cards.length - 1].id + 1 || 1;
+      const nextId = this.cards?.[this.cards.length - 1]?.id + 1 || 1;
       this.card.id = nextId;
 
       this.$emit("create", this.card);
@@ -152,7 +152,7 @@ export default {
   gap: 4px;
 
   &__label {
-    font-size: 10px;
+    font-size: 13px;
     letter-spacing: -0.02em;
     color: #49485e;
 
