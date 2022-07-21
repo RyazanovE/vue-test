@@ -130,8 +130,11 @@ export default {
     font-size: 12px;
     background: #eeeeee;
     border-radius: 10px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
     cursor: pointer;
-    transition: opacity 0.3s ease;
+    background-color: #7bae73;
+    transition: all 0.3s ease;
+    color: white;
     &:hover {
       opacity: 0.8;
     }
@@ -141,7 +144,7 @@ export default {
     &:disabled {
       background: #eeeeee !important;
       cursor: default;
-      opacity: 0.5;
+      color: #b4b4b4;
     }
   }
 }
