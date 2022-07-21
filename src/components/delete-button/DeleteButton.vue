@@ -1,6 +1,6 @@
 <template lang="">
   <button class="card__delete-btn">
-    <img class="" src="public\images\delete 1.png" />
+    <img class="" src="images\delete 1.png" />
   </button>
 </template>
 <script>

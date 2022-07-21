@@ -1,6 +1,6 @@
 <template lang="">
   <div class="card-list-select-wrapper">
-    <img class="card-list-select__arrow" src="public\images\Rectangle 33.svg" />
+    <img class="card-list-select__arrow" src="images\Rectangle 33.svg" />
     <select
       @change="changeOption"
       v-model="modelValue"

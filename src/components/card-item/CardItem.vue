@@ -2,7 +2,7 @@
   <li class="card-list__item card">
     <div class="card-container">
       <delete-button @click="$emit('remove', card)" />
-      <img :src="card.photo" class="card__img" />
+      <img :src="card.photo ?? 'images/Rectangle 31.png'" class="card__img" />
       <ul class="card-body-wrapper card-body">
         <li class="card-body__title">{{ card.title }}</li>
         <li class="card-body__description">{{ card.description }}</li>

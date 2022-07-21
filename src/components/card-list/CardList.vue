@@ -35,7 +35,7 @@ export default {
   },
   watch: {
     selectedSort(sortType) {
-      this.cards.sort((c1, c2) => {
+      this.cards = [...this.cards].sort((c1, c2) => {
         switch (sortType) {
           case "cost_max":
             return c2.cost - c1.cost;
@@ -81,8 +81,8 @@ export default {
   transition: all 1s;
 }
 
-
-.fade-enter-from, .fade-leave-to {
+.fade-enter-from,
+.fade-leave-to {
   opacity: 0;
   transform: translateY(-50%);
 }
