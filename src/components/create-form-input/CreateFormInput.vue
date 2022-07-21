@@ -80,6 +80,8 @@ export default {
     resize: none;
     border-radius: 4px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border: 1px solid transparent;
+    transition: all 300ms ease;
 
     &_red {
       border: 1px solid #ff8484;

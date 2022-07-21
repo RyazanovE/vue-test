@@ -14,7 +14,34 @@ import CardCreateForm from "./components/card-create-form/CardCreateForm.vue";
 export default {
   data() {
     return {
-      cards: [
+      cards: [],
+    };
+  },
+  methods: {
+    createItem(newItem) {
+      this.cards.push(newItem);
+    },
+    removeItem(id) {
+      this.cards = this.cards.filter((c) => c.id !== id);
+    },
+  },
+  watch: {
+    cards: {
+      handler(newCards) {
+        if (this.cards.length) {
+          localStorage.setItem("tr", JSON.stringify(newCards));
+        }
+        
+      },
+      deep: true,
+    },
+  },
+  created() {
+    const persistCards = localStorage.getItem("tr");
+    if (persistCards) {
+      this.cards = JSON.parse(persistCards);
+    } else {
+      this.cards = [
         {
           id: 1,
           photo: "url",
@@ -87,16 +114,8 @@ export default {
             "Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк",
           cost: 10000,
         },
-      ],
-    };
-  },
-  methods: {
-    createItem(newItem) {
-      this.cards.push(newItem);
-    },
-    removeItem(id) {
-      this.cards = this.cards.filter((c) => c.id !== id);
-    },
+      ];
+    }
   },
   components: { CardList, CardCreateForm },
 };
