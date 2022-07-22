@@ -7,7 +7,7 @@
       @remove="removeItem"
       :cards="cards"
     />
-    <img class="loader" src="images\loader.gif"  v-show="cardsIsLoading" />
+    <img class="loader" src="images\loader.gif" v-show="cardsIsLoading" />
   </app-wrapper>
 </template>
 
@@ -74,22 +74,5 @@ export default {
 <style lang="scss">
 @import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600&display=swap");
 @import "./reset.scss";
-
-* {
-  font-family: "Source Sans Pro", sans-serif !important;
-}
-
-.loader {
-  transform: scale(0.2);
-  flex-basis: 77%;
-}
-
-@media screen and (max-width: 1200px) {
-  .wrapper {
-    padding: 16px;
-  }
-  .container {
-    flex-direction: column;
-  }
-}
+@import "./App.scss";
 </style>

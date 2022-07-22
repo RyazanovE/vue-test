@@ -1,0 +1,17 @@
+* {
+	font-family: "Source Sans Pro", sans-serif !important;
+  }
+  
+  .loader {
+	transform: scale(0.2);
+	flex-basis: 77%;
+  }
+  
+  @media screen and (max-width: 1200px) {
+	.wrapper {
+	  padding: 16px;
+	}
+	.container {
+	  flex-direction: column;
+	}
+  }

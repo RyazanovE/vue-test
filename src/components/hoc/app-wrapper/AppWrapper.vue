@@ -9,14 +9,5 @@
 export default {};
 </script>
 <style lang="scss" scoped>
-.wrapper {
-  width: 100vw;
-  padding: 32px;
-}
-
-.container {
-  width: 100%;
-  display: flex;
-  gap: 16px;
-}
+@import "./AppWrapper.scss"
 </style>

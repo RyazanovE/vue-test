@@ -42,39 +42,5 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@media screen and (max-width: 800px) {
-  .card-list {
-    grid-template-columns: repeat(2, 1fr) !important;
-  }
-}
-@media screen and (max-width: 500px) {
-  .card-list {
-    grid-template-columns: repeat(1, 1fr) !important;
-  }
-}
-
-.card-list-container {
-  flex-basis: 77%;
-  display: flex;
-  align-items: end;
-  gap: 16px;
-  flex-direction: column;
-}
-
-.card-list {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-}
-
-.fade-enter-active,
-.fade-leave-active {
-  transition: all 1s;
-}
-
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
-  transform: translateY(-50%);
-}
+@import "./CardList.scss";
 </style>
