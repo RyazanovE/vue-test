@@ -1,21 +1,21 @@
 <template>
-  <div class="wrapper">
-    <div class="container">
-      <card-create-form @create="createItem" :cards="cards" />
-      <card-list
-        @sort="sortCards"
-        v-show="!isLoading"
-        @remove="removeItem"
-        :cards="cards"
-      />
-      <img class="loader" src="images\loader.gif" v-show="isLoading" />
-    </div>
-  </div>
+  <app-wrapper>
+    <card-create-form @create="createItem" :cards="cards" />
+    <card-list
+      @sort="sortCards"
+      v-if="!isLoading"
+      @remove="removeItem"
+      :cards="cards"
+    />
+    <img class="loader" src="images\loader.gif" v-else />
+  </app-wrapper>
 </template>
 
 <script>
 import CardList from "./components/card-list/CardList.vue";
 import CardCreateForm from "./components/card-create-form/CardCreateForm.vue";
+import { cardsMockData } from "./mock-data/cards/cards.js";
+import AppWrapper from "./components/hoc/app-wrapper/AppWrapper.vue";
 
 export default {
   data() {
@@ -50,80 +50,7 @@ export default {
         if (persistCards) {
           this.cards = JSON.parse(persistCards);
         } else {
-          this.cards = [
-            {
-              id: 1,
-              photo: "images/Rectangle 31.png",
-              title: "Наименование товара",
-              description:
-                "Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк",
-              cost: 10000,
-            },
-            {
-              id: 2,
-              photo: "images/Rectangle 31.png",
-              title: "Наименование товара",
-              description:
-                "Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк",
-              cost: 10000,
-            },
-            {
-              id: 3,
-              photo: "images/Rectangle 31.png",
-              title: "Наименование товара",
-              description:
-                "Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк",
-              cost: 10000,
-            },
-            {
-              id: 4,
-              photo: "images/Rectangle 31.png",
-              title: "Наименование товара",
-              description:
-                "Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк",
-              cost: 10000,
-            },
-            {
-              id: 5,
-              photo: "images/Rectangle 31.png",
-              title: "Наименование товара",
-              description:
-                "Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк",
-              cost: 10000,
-            },
-            {
-              id: 6,
-              photo: "images/Rectangle 31.png",
-              title: "Наименование товара",
-              description:
-                "Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк",
-              cost: 10000,
-            },
-            {
-              id: 7,
-              photo: "images/Rectangle 31.png",
-              title: "Наименование товара",
-              description:
-                "Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк",
-              cost: 10000,
-            },
-            {
-              id: 8,
-              photo: "images/Rectangle 31.png",
-              title: "Наименование товара",
-              description:
-                "Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк",
-              cost: 10000,
-            },
-            {
-              id: 9,
-              photo: "images/Rectangle 31.png",
-              title: "Наименование товара",
-              description:
-                "Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк",
-              cost: 10000,
-            },
-          ];
+          this.cards = cardsMockData;
         }
         this.isLoading = false;
       }, 1000);
@@ -138,9 +65,9 @@ export default {
     },
   },
   mounted() {
-    this.initializeCards()
+    this.initializeCards();
   },
-  components: { CardList, CardCreateForm },
+  components: { CardList, CardCreateForm, AppWrapper },
 };
 </script>
 
@@ -154,20 +81,7 @@ export default {
 
 .loader {
   transform: scale(0.2);
-}
-
-.wrapper {
-  padding: 32px;
-}
-
-.container {
-  width: 100%;
-  display: flex;
-  gap: 16px;
-
-  & > * {
-    flex: 1;
-  }
+  flex-basis: 77%;
 }
 
 @media screen and (max-width: 1200px) {

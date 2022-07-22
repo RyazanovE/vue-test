@@ -89,27 +89,17 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@media screen and (max-width: 1200px) {
-  .card-form-container {
-    display: none !important;
-  }
-  .card-form {
-    position: static !important;
-  }
-}
-
 .card-form-container {
+  flex-basis: 23%;
   display: flex;
   flex-direction: column;
   gap: 16px;
-  max-width: 23%;
 }
 
 .card-form-header {
   font-size: 28px;
   font-weight: 600;
 }
-
 .card-form {
   top: 16px;
   position: sticky;
@@ -119,7 +109,6 @@ export default {
   gap: 16px;
 
   padding: 24px;
-  margin-bottom: 24px;
   border-radius: 4px;
   box-shadow: 0 20px 30px rgba(0, 0, 0, 0.04);
 
@@ -189,25 +178,15 @@ export default {
       font-size: 12px;
       color: #b4b4b4;
     }
+  }
+}
 
-    &::-webkit-input-placeholder {
-      color: #b4b4b4;
-      font-size: 12px;
-    }
-    &:-moz-placeholder {
-      /* Upto Firefox 18, Deprecated in Firefox 19  */
-      color: #b4b4b4;
-      font-size: 12px;
-    }
-    &::-moz-placeholder {
-      /* Firefox 19+ */
-      color: #b4b4b4;
-      font-size: 12px;
-    }
-    &:-ms-input-placeholder {
-      color: #b4b4b4;
-      font-size: 12px;
-    }
+@media screen and (max-width: 1200px) {
+  .card-form-container {
+    display: none !important;
+  }
+  .card-form {
+    position: static !important;
   }
 }
 </style>

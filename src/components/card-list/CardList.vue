@@ -35,8 +35,7 @@ export default {
   },
   watch: {
     selectedSort(sortType) {
-      this.$emit("sort", sortType)
-      
+      this.$emit("sort", sortType);
     },
   },
 };
@@ -55,6 +54,7 @@ export default {
 }
 
 .card-list-container {
+  flex-basis: 77%;
   display: flex;
   align-items: end;
   gap: 16px;
