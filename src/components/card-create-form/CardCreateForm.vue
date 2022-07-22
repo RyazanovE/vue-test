@@ -62,7 +62,6 @@ export default {
       const nextId = cards?.[cards?.length - 1]?.id + 1 || 1;
       this.card.id = nextId;
       this.$emit("create", this.card);
-      console.log(this.card)
       this.card = {
         title: "",
         description: "",
