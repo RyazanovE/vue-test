@@ -15,7 +15,7 @@
         :disabled="
           !(isButtonValid.title && isButtonValid.photo && isButtonValid.cost)
         "
-        @click="createItem"
+        @click="createItem(cards)"
         class="card-form__button"
         type="submit"
       >
@@ -58,10 +58,11 @@ export default {
     this.inputsArr = inputsMockArr;
   },
   methods: {
-    createItem() {
-      const nextId = this.cards?.[this.cards.length - 1]?.id + 1 || 1;
+    createItem(cards) {
+      const nextId = cards?.[cards?.length - 1]?.id + 1 || 1;
       this.card.id = nextId;
       this.$emit("create", this.card);
+      console.log(this.card)
       this.card = {
         title: "",
         description: "",
