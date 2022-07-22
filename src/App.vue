@@ -38,10 +38,10 @@ export default {
       });
     },
     createItem(newItem) {
-      this.cards.push(newItem);
+      rhis.cards = [...this.cards].push(newItem);
     },
     removeItem(id) {
-      this.cards = this.cards.filter((c) => c.id !== id);
+      this.cards = [...this.cards].filter((c) => c.id !== id);
     },
 
     initializeCards() {

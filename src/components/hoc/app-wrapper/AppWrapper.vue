@@ -10,6 +10,7 @@ export default {};
 </script>
 <style lang="scss" scoped>
 .wrapper {
+  width: 100vw;
   padding: 32px;
 }
 
