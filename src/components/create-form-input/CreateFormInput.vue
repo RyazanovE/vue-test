@@ -1,14 +1,22 @@
 <template lang="">
   <div class="card-from__group form-group">
-    <label class="form-group__label form-group__label_dot">{{label}}</label>
+    <label :class="applyLabelStyle(isTextarea)">{{ label }}</label>
     <input
+      v-if="!isTextarea"
       :placeholder="placeholder"
       :value="modelValue"
       @input="inputHandler"
       :class="applyInputStyle()"
       type="text"
     />
-    <p class="form-group__alert" v-if="!isValid">Поле является обязательным</p>
+    <textarea
+      v-else
+      @input="inputHandler"
+      :placeholder="placeholder"
+      v-model="modelValue"
+      class="form-group__input form-group__input_large"
+    />
+    <p class="form-group__alert" v-if="!isValid && !isTextarea">Поле является обязательным</p>
   </div>
 </template>
 <script>
@@ -19,6 +27,7 @@ export default {
     };
   },
   props: {
+    isTextarea: Boolean,
     label: String,
     placeholder: String,
     isDisabled: Boolean,
@@ -30,6 +39,13 @@ export default {
         this.isValid
           ? "form-group__input"
           : "form-group__input form-group__input_red",
+      ];
+    },
+    applyLabelStyle: function (isTextarea) {
+      return [
+        isTextarea
+          ? "form-group__label"
+          : "form-group__label form-group__label_dot",
       ];
     },
     inputHandler(e) {

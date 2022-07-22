@@ -2,32 +2,13 @@
   <card-create-form-wrapper>
     <form class="card-form" @submit.prevent>
       <create-form-input
-        :placeholder="'Введите наименование товара'"
-        :label="'Наименование товара'"
-        v-model:isDisabled="isButtonValid.title"
-        v-model="card.title"
-      />
-      
-
-
-      <create-form-textarea
-        :label="'Описание товара'"
-        :placeholder="'Введите описание товара'"
-        v-model="card.description"
-      />
-
-      <create-form-input
-        :label="'Ссылка на изображение товара'"
-        :placeholder="'Введите ссылку'"
-        v-model:isDisabled="isButtonValid.img"
-        v-model="card.img"
-      />
-    
-      <create-form-input
-        :label="'Цена товара'"
-        :placeholder="'Введите цену'"
-        v-model:isDisabled="isButtonValid.cost"
-        v-model="card.cost"
+        v-for="{ id, placeholder, label, value, isTextarea } in this.inputsArr"
+        :key="id"
+        :isTextarea="isTextarea"
+        :placeholder="placeholder"
+        :label="label"
+        v-model:isDisabled="isButtonValid[value]"
+        v-model="card[value]"
       />
 
       <button
@@ -47,9 +28,9 @@
 <script>
 import CreateFormInput from "../create-form-input/CreateFormInput.vue";
 import CardCreateFormWrapper from "../hoc/card-create-form-wrapper/CardCreateFormWrapper.vue";
-import CreateFormTextarea from "../create-form-textarea/CreateFormTextarea.vue";
+import inputsMockArr from "../../mock-data/inputs/inputs.js";
 export default {
-  components: { CreateFormInput, CardCreateFormWrapper, CreateFormTextarea },
+  components: { CreateFormInput, CardCreateFormWrapper },
 
   props: {
     cards: {
@@ -59,6 +40,7 @@ export default {
   },
   data() {
     return {
+      inputsArr: [],
       isButtonValid: {
         title: false,
         img: false,
@@ -72,7 +54,9 @@ export default {
       },
     };
   },
-
+  created() {
+    this.inputsArr = inputsMockArr;
+  },
   methods: {
     createItem() {
       const nextId = this.cards?.[this.cards.length - 1]?.id + 1 || 1;

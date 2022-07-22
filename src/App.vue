@@ -3,11 +3,11 @@
     <card-create-form @create="createItem" :cards="cards" />
     <card-list
       @sort="sortCards"
-      v-if="!cardsIsLoading"
+      v-show="!cardsIsLoading"
       @remove="removeItem"
       :cards="cards"
     />
-    <img class="loader" src="images\loader.gif" v-else />
+    <img class="loader" src="images\loader.gif"  v-show="cardsIsLoading" />
   </app-wrapper>
 </template>
 
@@ -41,7 +41,7 @@ export default {
       this.cards.push(newItem);
     },
     removeItem(id) {
-      this.cards = this.cards.filter((c) => c.id !== id);
+      this.cards = [...this.cards].filter((c) => c.id !== id);
     },
 
     initializeCards() {
