@@ -1,6 +1,6 @@
 <template lang="">
   <div class="card-from__group form-group">
-    <label class="form-group__label form-group__label_dot"><slot></slot></label>
+    <label class="form-group__label form-group__label_dot">{{label}}</label>
     <input
       :placeholder="placeholder"
       :value="modelValue"
@@ -19,6 +19,7 @@ export default {
     };
   },
   props: {
+    label: String,
     placeholder: String,
     isDisabled: Boolean,
     modelValue: [String, Number],

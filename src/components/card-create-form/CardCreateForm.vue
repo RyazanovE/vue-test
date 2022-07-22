@@ -1,35 +1,33 @@
 <template lang="">
-  <div class="card-form-container">
-    <h4 class="card-form-header">Добавление товара</h4>
+  <card-create-form-wrapper>
     <form class="card-form" @submit.prevent>
       <create-form-input
         :placeholder="'Введите наименование товара'"
+        :label="'Наименование товара'"
         v-model:isDisabled="isButtonValid.title"
         v-model="card.title"
-        >Наименование товара</create-form-input
+      />
       >
 
-      <div class="card-from__group form-group">
-        <label class="form-group__label">Описание товара</label>
-        <textarea
-          placeholder="Введите описание товара"
-          v-model="card.description"
-          class="form-group__input form-group__input_large"
-        />
-      </div>
+      <create-form-textarea
+        :label="'Описание товара'"
+        :placeholder="'Введите описание товара'"
+        v-model="card.description"
+      />
 
       <create-form-input
+        :label="'Ссылка на изображение товара'"
         :placeholder="'Введите ссылку'"
         v-model:isDisabled="isButtonValid.img"
         v-model="card.img"
-        >Ссылка на изображение товара</create-form-input
+      />
       >
       <create-form-input
+        :label="'Цена товара'"
         :placeholder="'Введите цену'"
         v-model:isDisabled="isButtonValid.cost"
         v-model="card.cost"
-        >Цена товара</create-form-input
-      >
+      />
 
       <button
         :disabled="
@@ -42,13 +40,16 @@
         Добавить товар
       </button>
     </form>
-  </div>
+  </card-create-form-wrapper>
 </template>
 
 <script>
 import CreateFormInput from "../create-form-input/CreateFormInput.vue";
+import CardCreateFormWrapper from "../hoc/card-create-form-wrapper/CardCreateFormWrapper.vue";
+import CreateFormTextarea from "../create-form-textarea/CreateFormTextarea.vue";
 export default {
-  components: { CreateFormInput },
+  components: { CreateFormInput, CardCreateFormWrapper, CreateFormTextarea },
+
   props: {
     cards: {
       type: Array,
@@ -92,17 +93,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.card-form-container {
-  flex-basis: 23%;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.card-form-header {
-  font-size: 28px;
-  font-weight: 600;
-}
 .card-form {
   top: 16px;
   position: sticky;
