@@ -16,7 +16,7 @@ const inputsMockArr =  [
 	  id: 3,
 	  label: "Ссылка на изображение товара",
 	  placeholder: "Введите ссылку",
-	  value: "img",
+	  value: "photo",
 	},
 	{
 	  id: 4,

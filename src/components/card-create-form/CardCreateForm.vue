@@ -13,7 +13,7 @@
 
       <button
         :disabled="
-          !(isButtonValid.title && isButtonValid.img && isButtonValid.cost)
+          !(isButtonValid.title && isButtonValid.photo && isButtonValid.cost)
         "
         @click="createItem"
         class="card-form__button"
@@ -43,11 +43,11 @@ export default {
       inputsArr: [],
       isButtonValid: {
         title: false,
-        img: false,
+        photo: false,
         cost: false,
       },
       card: {
-        img: "",
+        photo: "",
         title: "",
         description: "",
         cost: null,
@@ -66,10 +66,11 @@ export default {
         title: "",
         description: "",
         cost: null,
+        photo: "",
       };
       this.isButtonValid = {
         title: false,
-        img: false,
+        photo: false,
         cost: false,
       };
     },
