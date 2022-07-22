@@ -35,16 +35,8 @@ export default {
   },
   watch: {
     selectedSort(sortType) {
-      this.cards = [...this.cards].sort((c1, c2) => {
-        switch (sortType) {
-          case "cost_max":
-            return c2.cost - c1.cost;
-          case "cost_min":
-            return c1.cost - c2.cost;
-          case "name":
-            return c1.title.localeCompare(c2.title);
-        }
-      });
+      this.$emit("sort", sortType)
+      
     },
   },
 };

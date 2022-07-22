@@ -2,7 +2,12 @@
   <div class="wrapper">
     <div class="container">
       <card-create-form @create="createItem" :cards="cards" />
-      <card-list v-show="!isLoading" @remove="removeItem" :cards="cards" />
+      <card-list
+        @sort="sortCards"
+        v-show="!isLoading"
+        @remove="removeItem"
+        :cards="cards"
+      />
       <img class="loader" src="images\loader.gif" v-show="isLoading" />
     </div>
   </div>
@@ -20,12 +25,25 @@ export default {
     };
   },
   methods: {
+    sortCards(sortType) {
+      this.cards = [...this.cards].sort((c1, c2) => {
+        switch (sortType) {
+          case "cost_max":
+            return c2.cost - c1.cost;
+          case "cost_min":
+            return c1.cost - c2.cost;
+          case "name":
+            return c1.title.localeCompare(c2.title);
+        }
+      });
+    },
     createItem(newItem) {
       this.cards.push(newItem);
     },
     removeItem(id) {
       this.cards = this.cards.filter((c) => c.id !== id);
     },
+
     initializeCards() {
       const persistCards = localStorage.getItem("tr");
       setTimeout(() => {
