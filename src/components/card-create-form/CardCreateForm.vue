@@ -7,7 +7,8 @@
         v-model:isDisabled="isButtonValid.title"
         v-model="card.title"
       />
-      >
+      
+
 
       <create-form-textarea
         :label="'Описание товара'"
@@ -21,7 +22,7 @@
         v-model:isDisabled="isButtonValid.img"
         v-model="card.img"
       />
-      >
+    
       <create-form-input
         :label="'Цена товара'"
         :placeholder="'Введите цену'"
