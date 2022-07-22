@@ -75,15 +75,18 @@ export default {
     createItem() {
       const nextId = this.cards?.[this.cards.length - 1]?.id + 1 || 1;
       this.card.id = nextId;
-
       this.$emit("create", this.card);
       this.card = {
         title: "",
         description: "",
         cost: null,
       };
+      this.isButtonValid = {
+        title: false,
+        img: false,
+        cost: false,
+      };
     },
-    validateHandler() {},
   },
 };
 </script>

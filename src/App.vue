@@ -3,7 +3,7 @@
     <card-create-form @create="createItem" :cards="cards" />
     <card-list
       @sort="sortCards"
-      v-if="!isLoading"
+      v-if="!cardsIsLoading"
       @remove="removeItem"
       :cards="cards"
     />
@@ -14,13 +14,13 @@
 <script>
 import CardList from "./components/card-list/CardList.vue";
 import CardCreateForm from "./components/card-create-form/CardCreateForm.vue";
-import { cardsMockData } from "./mock-data/cards/cards.js";
 import AppWrapper from "./components/hoc/app-wrapper/AppWrapper.vue";
+import cardsMockData from "./mock-data/cards/cards.js";
 
 export default {
   data() {
     return {
-      isLoading: true,
+      cardsIsLoading: true,
       cards: [],
     };
   },
@@ -38,28 +38,28 @@ export default {
       });
     },
     createItem(newItem) {
-      rhis.cards = [...this.cards].push(newItem);
+      this.cards.push(newItem);
     },
     removeItem(id) {
-      this.cards = [...this.cards].filter((c) => c.id !== id);
+      this.cards = this.cards.filter((c) => c.id !== id);
     },
 
     initializeCards() {
-      const persistCards = localStorage.getItem("tr");
+      const persistCards = localStorage.getItem("cards");
       setTimeout(() => {
         if (persistCards) {
           this.cards = JSON.parse(persistCards);
         } else {
           this.cards = cardsMockData;
         }
-        this.isLoading = false;
+        this.cardsIsLoading = false;
       }, 1000);
     },
   },
   watch: {
     cards: {
       handler(newCards) {
-        localStorage.setItem("tr", JSON.stringify(newCards));
+        localStorage.setItem("cards", JSON.stringify(newCards));
       },
       deep: true,
     },

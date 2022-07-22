@@ -1,4 +1,4 @@
-export const cardsMockData = [
+const cardsMockData = [
   {
     id: 1,
     photo: "images/Rectangle 31.png",
@@ -72,3 +72,5 @@ export const cardsMockData = [
     cost: 10000,
   },
 ];
+
+export default cardsMockData
