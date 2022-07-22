@@ -9,7 +9,7 @@ const inputsMockArr =  [
 	  id: 2,
 	  label: "Описание товара",
 	  placeholder: "Введите описание товара",
-	  value: "desctiption",
+	  value: "description",
 	  isTextarea: true,
 	},
 	{
